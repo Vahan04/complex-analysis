@@ -3,6 +3,7 @@
 #include <stdexcept>
 
 #include "complex_analysis/complex.hpp"
+#include "complex_analysis/fractal.hpp"
 
 using complex_analysis::Complex;
 using complex_analysis::approximately_equal;
@@ -41,4 +42,9 @@ int main() {
         threw = true;
     }
     assert(threw);
+
+    const auto inside = complex_analysis::colorize(100, 100);
+    const auto outside = complex_analysis::colorize(0, 100);
+    assert(inside.red == 0 && inside.green == 0 && inside.blue == 0);
+    assert(outside.red == 0 && outside.green == 0 && outside.blue == 255);
 }

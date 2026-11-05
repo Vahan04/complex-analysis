@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-add_library(complex_analysis src/complex.cpp)
+add_library(complex_analysis src/complex.cpp src/fractal.cpp)
 target_include_directories(complex_analysis PUBLIC include)
 
 if (MSVC)
@@ -16,6 +16,9 @@ endif()
 
 add_executable(complex_demo examples/main.cpp)
 target_link_libraries(complex_demo PRIVATE complex_analysis)
+
+add_executable(complexlab tools/complexlab.cpp)
+target_link_libraries(complexlab PRIVATE complex_analysis)
 
 enable_testing()
 add_executable(complex_tests tests/complex_tests.cpp)
